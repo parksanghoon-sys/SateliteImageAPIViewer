@@ -1,0 +1,36 @@
+﻿<Window x:Class="Frame이용한_팝업처리.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frame이용한_팝업처리"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid>
+        <Border Background="Black"
+        Opacity="0.2">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsMainPopUpOpen}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <!--Popup 백그라운드 처리 마우스 클릭시 팝업 Close-->
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding PopUpCloseCommand}" />
+            </Border.InputBindings>
+        </Border>
+        <Frame x:Name="xPopupFrame"
+               Visibility="{Binding IsMainPopUpOpen, Converter={StaticResource BoolToVisConverter}}"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Source="{Binding PopupPage}"
+               NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>

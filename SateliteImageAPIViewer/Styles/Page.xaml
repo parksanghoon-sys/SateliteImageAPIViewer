@@ -1,0 +1,113 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helper ="clr-namespace:SateliteImageAPIViewer.Helpers">
+
+    <!--<Style TargetType="{x:Type helper:PopUpHelper}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type helper:PopUpHelper}">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                    </ControlTemplate.Resources>
+                    <Grid Background="{TemplateBinding Background}" 
+                          Visibility="{TemplateBinding IsOpen
+                            Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Border
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            UseLayoutRounding="True">
+                            <Grid>
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=border}" />
+                                </Grid.OpacityMask>
+                                <Border
+                                    x:Name="border"
+                                    Background="White"
+                                    CornerRadius="5" />
+                                <ContentControl Content="{TemplateBinding Content}" />
+                            </Grid>
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    ShadowDepth="10"
+                                    Color="Gray" />
+                            </Border.Effect>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    
+    <Style x:Key="PageStyle" 
+           TargetType="UserControl">
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform X="0" Y="50"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Visibility"
+                     Value="Collapsed">
+                <Setter Property="Opacity"
+                        Value="0"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                         Duration="0:0:1"
+                                         From="0"
+                                         To="1" />
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                         From="50"
+                                         To="0"
+                                         Duration="0:0:0.8"
+                                         DecelerationRatio="0.6" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="{x:Type helper:Dialog}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type helper:Dialog}">
+                    <ControlTemplate.Resources>
+                        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                    </ControlTemplate.Resources>
+                    <Grid Background="{TemplateBinding Background}" Visibility="{TemplateBinding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Border
+                            
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            UseLayoutRounding="True">
+                            <Grid>
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=border}" />
+                                </Grid.OpacityMask>
+                                <Border
+                                    x:Name="border"
+                                    Background="White"
+                                    CornerRadius="5" />
+                                <ContentControl Content="{TemplateBinding Content}" />
+                            </Grid>
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    ShadowDepth="10"
+                                    Color="Gray" />
+                            </Border.Effect>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

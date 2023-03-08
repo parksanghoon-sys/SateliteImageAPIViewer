@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="SateliteImageAPIViewer.Views.SerchBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SateliteImageAPIViewer.Views"
+             xmlns:vb="clr-namespace:SateliteImageAPIViewer.ViewModels"
+             xmlns:convert="clr-namespace:SateliteImageAPIViewer.Converters"
+             xmlns:enum="clr-namespace:SateliteImageAPIViewer.enums"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300"
+             Background="#FFFFFF">
+    <UserControl.Resources>
+        <convert:RadioBoolToEnum x:Key="CameraTypeConverter"/>
+        <ControlTemplate
+                 x:Key="rectRadioButton"
+                 TargetType="{x:Type RadioButton}">
+            <Border
+                    Name="border"
+                    BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                    CornerRadius="10"
+                    Padding="5"
+                    BorderThickness="1"
+                    Margin="5"
+                    Height="32"
+                    Width="100">
+                <ContentPresenter
+                        Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger
+                         Property="IsChecked"
+                         Value="True">
+                    <Setter
+                             TargetName="border"
+                             Property="BorderThickness"
+                             Value="3" />
+                    <Setter
+                             Property="FontWeight"
+                             Value="Bold" />
+                    <Setter
+                        TargetName="border"
+                        Property="BorderBrush"
+                        Value="#59B9EA"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Border  BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                BorderThickness="0.21">
+        <StackPanel Orientation="Vertical" Margin="10"> 
+            <Button Content="API 요청" Command="{Binding OnRequsetCommand}" FontWeight="Bold"
+                    Width="auto" Height="40" Style="{StaticResource mainRectButton}" Cursor="Hand" BorderThickness="1"/>
+            <DatePicker materialDesign:HintAssist.Hint="Pick a date" Padding ="10" SelectedDate="{Binding YesterdayDateTIme}"/>
+            <StackPanel Orientation="Vertical" Margin="0">
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="영상구분" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+                    <RadioButton Grid.Row="0" Grid.Column="0" Template="{StaticResource rectRadioButton}"  Content="적외 영상"
+                         IsChecked="{Binding Path=CameraType , Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraType.ir105}, Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="0" Grid.Column="1" Template="{StaticResource rectRadioButton}" Margin="0" Content="가시 영상"
+                         IsChecked="{Binding Path=CameraType , Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraType.vi006}, Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="1" Grid.Column="0" Template="{StaticResource rectRadioButton}"  Content="수증기 영상"
+                         IsChecked="{Binding Path=CameraType , Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraType.vv069}, Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="1" Grid.Column="1" 
+                             Template="{StaticResource rectRadioButton}"  Content="단파적외 영상"
+                         IsChecked="{Binding Path=CameraType , Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraType.sw038}, Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="2" Grid.Column="0"
+                             Template="{StaticResource rectRadioButton}"  Content="RGB컬러 영상"
+                         IsChecked="{Binding Path=CameraType , Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraType.rgbt}, 
+                        Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="2" Grid.Column="2"
+                             Template="{StaticResource rectRadioButton}"  Content="RGB 주야간합성 영상"
+                         IsChecked="{Binding Path=CameraType, Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraType.rgbdn}, Mode=TwoWay}"/>
+                </Grid>
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0">
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Text="지역 구분" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <RadioButton Grid.Row="0" Grid.Column="0" 
+                                 Template="{StaticResource rectRadioButton}"  
+                                 Content="전국" IsChecked="{Binding Path=CameraArea ,
+                                Converter={StaticResource CameraTypeConverter},ConverterParameter={x:Static enum:eCameraArea.fd}, Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="0" Grid.Column="1" Template="{StaticResource rectRadioButton}" 
+                                 Margin="0" Content="동아시아"
+                                 IsChecked="{Binding Path=CameraArea , Converter={StaticResource CameraTypeConverter},
+                                 ConverterParameter={x:Static enum:eCameraArea.ea}, Mode=TwoWay}"/>
+                    <RadioButton Grid.Row="1" Grid.Column="0" 
+                                 Template="{StaticResource rectRadioButton}"  Content="한반도"
+                                 IsChecked="{Binding Path=CameraArea , Converter={StaticResource CameraTypeConverter},
+                                 ConverterParameter={x:Static enum:eCameraArea.ko}, Mode=TwoWay}"/>
+                </Grid>
+                <Button Content="TEST" Command="{Binding OnTestCommand}" Margin="10" 
+                        Style="{StaticResource mainRectButton}" Width="auto"
+                        Cursor="Hand" BorderThickness="1"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

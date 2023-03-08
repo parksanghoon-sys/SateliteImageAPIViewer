@@ -1,0 +1,7 @@
+
+MainViewModel 에서 생성시 주입되는것은 의존성 주입으로 인한 싱글톤의 클래스들이 주입되는 형태이다.
+
+1.INavigationService(singleton) => NavigationViewModel , homeViewModel (NavigationBarViewModel)
+2.HomeViewModel => DialogStore , LoginViewModel : HomeView 와 LoginVIew 를 연결 해주는 느낌
+3.LoginViewModel =>AccountStore => Account 비교 해서 Login 상태 확인?, CompositeNavigationService => 취소 ViewModel 나가는 것?, 다음 페이지? , 
+4. NavigationBarViewModel => AccountStore => Login 기록및 Login 유지확인 , INavigationService home 페이지를 불러오기위함.

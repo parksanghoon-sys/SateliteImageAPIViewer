@@ -1,0 +1,24 @@
+﻿<Application x:Class="Musician.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:view="clr-namespace:Musician.MVVM.Views"
+             xmlns:viewModel="clr-namespace:Musician.MVVM.ViewModels"
+             xmlns:local="clr-namespace:Musician"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/SystemButtons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DiscoveryViewModel}">
+                <view:DiscoveryView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

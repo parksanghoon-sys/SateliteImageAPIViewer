@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:views="clr-namespace:SateliteImageAPIViewer.Views"
+                    xmlns:dialogViews="clr-namespace:SateliteImageAPIViewer.Views.Windows"
+                    xmlns:viewPages="clr-namespace:SateliteImageAPIViewer.Views.Page"
+                    xmlns:dataContext ="clr-namespace:SateliteImageAPIViewer.ViewModels">
+
+    <DataTemplate DataType="{x:Type dataContext:MainViewModel}">
+        <views:MainUI/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:SateliteAPIResultViewModel}">
+        <views:SateliteAPIResultView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:SateliteAPISearchViewModel}">
+        <views:SateliteAPISearchView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:SateliteAPISettingsViewModel}">
+        <views:SerchBar/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:LoginViewModel}">
+        <views:LoginView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:SignUpViewModel}">
+        <views:SignUpView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:ImageLoadViewModel}">
+        <dialogViews:LoadImageView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:MenuBarViewModel}">
+        <views:MenuBar/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:HomeViewModel}">
+        <views:HomeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:SateliteSearchViewModel}">
+        <viewPages:SateliteSearchView/>
+    </DataTemplate>
+
+</ResourceDictionary>

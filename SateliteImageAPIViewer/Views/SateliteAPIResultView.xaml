@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="SateliteImageAPIViewer.Views.SateliteAPIResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:SateliteImageAPIViewer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000">
+             <!--DataContext="{Binding Source={StaticResource Locator},Path=SateliteAPIResultViewModel}"-->
+    <Border BorderBrush="Black" BorderThickness="1 0 1 0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="0.2" BorderBrush="Black">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="위성 영상 API 정보" Padding="10"/>
+            </Border>
+            <Border BorderThickness="0.2" BorderBrush="Black" Grid.Row="1">
+                <ListView Margin="0" ItemsSource="{Binding SateliteItems}" Grid.Row="1" 
+                          SelectedItem="{Binding SelectedItem , Mode=TwoWay}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="파일 경로" Width="300" DisplayMemberBinding="{Binding FilePath}" />
+                            <GridViewColumn Header="영상 구분" Width="150" DisplayMemberBinding="{Binding SatelliteType}"/>
+                            <GridViewColumn Header="지역 구분" Width="150" DisplayMemberBinding="{Binding SatelliteArea}"/>
+                            <GridViewColumn Header="저장 날짜" Width="150" DisplayMemberBinding="{Binding FileCreateDate}"/>
+                            <GridViewColumn Header="사용자" Width="150" DisplayMemberBinding="{Binding UserID}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+            
+            <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="SAVE" Width="117" Height="50" Margin="50 5 5 5" Command="{Binding onSaveCommand}" Cursor="Hand"
+                        Style="{StaticResource mainButton}"/>
+                <Button Content="LOAD" Width="117" Height="50" Margin="50 5 5 5" Command="{Binding onButtonLoadCommand}"
+                        Style="{StaticResource mainButton}"/>
+                <Button Content="SEARCH" Width="117" Height="50" Margin="50 5 5 5"
+                        Command="{Binding onSearchLoadCommand}"
+                        Style="{StaticResource mainButton}" Cursor="Hand" />
+                <Button Content="DELETE" Width="117" Height="50" Margin="50 5 5 5" Cursor="Hand"
+                        Command="{Binding onSeltedDeleteCommand}"
+                        Style="{StaticResource mainButton}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</UserControl>

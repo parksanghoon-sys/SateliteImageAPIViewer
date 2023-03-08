@@ -1,0 +1,48 @@
+﻿<Application x:Class="SateliteImageAPIViewer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SateliteImageAPIViewer"             
+             xmlns:cn ="clr-namespace:SateliteImageAPIViewer.Converters"             
+             xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SateliteImageAPIViewer;component/Mappings.xaml"/>
+                
+                <ResourceDictionary Source="Styles/Page.xaml" />
+                <ResourceDictionary Source="Styles/Image.xaml" />
+                <ResourceDictionary Source="Styles/Text.xaml" />
+                <ResourceDictionary Source="Styles/Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Grey.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <cn:BitmapToBitmapSourceConverter x:Key="BitmapToBitmapSourceConverter"/>
+            <cn:MatToWriteableBitmapConverter x:Key="MatToWriteableBitmapConverter"/>
+            <cn:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+            <!--<vm:ViewModelLocator x:Key="Locator"/>-->
+            <!--<DataTemplate DataType="{x:Type vm:ImageLoadViewModel}">
+                <vw:LoadImageView/>
+            </DataTemplate>-->
+
+            <!--#region Style -->
+            <Style x:Key="ButtonFocusVisual">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--#endregion-->
+            <system:String x:Key="DatabaseConnectString">
+                Server=127.0.0.1; Database=SateliteApp; uid=ParkSangHoon; pwd=tjb4048796;TrustServerCertificate=True
+            </system:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

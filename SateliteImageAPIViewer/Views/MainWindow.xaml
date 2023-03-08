@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="SateliteImageAPIViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:SateliteImageAPIViewer"
+        xmlns:converters="clr-namespace:SateliteImageAPIViewer.Converters"
+        xmlns:v="clr-namespace:SateliteImageAPIViewer.Views"
+        mc:Ignorable="d">
+    <UserControl.Resources>
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <converters:BoolToVisibilityConverter
+                x:Key="ReversBoolToVisibilityConverter"
+                FalseValue="Visible"
+                TrueValue="Collapsed" />
+        </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <v:SerchBar Visibility="{Binding IsEditing, Converter={StaticResource ReversBoolToVisibilityConverter}}"/>
+        </Grid>
+        <Grid Grid.Column="1">
+            <v:SateliteAPIResultView Visibility="{Binding IsBusy, Converter={StaticResource ReversBoolToVisibilityConverter}, Mode=OneWay}"/>
+        </Grid>
+        <Border Background="#66000000" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter},Mode=OneWay}" Grid.Column="1">
+            <Border
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="White"
+                    CornerRadius="5">
+                <StackPanel Width="100" Margin="10">
+                    <ProgressBar Height="10" IsIndeterminate="True" />
+                    <TextBlock
+                            Margin="0,5,0,0"
+                            HorizontalAlignment="Center"
+                            Text="Busy..." />
+                </StackPanel>
+                <Border.Effect>
+                    <DropShadowEffect />
+                </Border.Effect>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>
