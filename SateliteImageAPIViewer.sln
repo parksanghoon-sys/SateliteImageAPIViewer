@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SateliteImageAPIViewer", "영상뷰어\SateliteImageAPIViewer.csproj", "{B89BB2D6-76BC-4A14-8CA4-7E32F75A0C42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SateliteImageAPIViewer", "SateliteImageAPIViewer\SateliteImageAPIViewer.csproj", "{B89BB2D6-76BC-4A14-8CA4-7E32F75A0C42}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserControlObjectTest", "UserControlObjectTest\UserControlObjectTest.csproj", "{0DE83A92-1695-46C2-82B8-677217602E96}"
 EndProject
