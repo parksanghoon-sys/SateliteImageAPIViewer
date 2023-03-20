@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using SateliteImageAPIViewer.enums;
 using SateliteImageAPIViewer.Services.DataBase;
 using SateliteImageAPIViewer.Services.Navigation;
+using SateliteImageAPIViewer.Stores;
 
 namespace SateliteImageAPIViewer.ViewModels
 {
@@ -94,7 +95,10 @@ namespace SateliteImageAPIViewer.ViewModels
         [Command]
         public void OnCancel()
         {
-            _navigation.Navigate<HomeViewModel>();
+            Messenger.Default.Send(new DialogDataStore
+            {
+                DilaogType = enums.eDialog.None,
+            });
         }
     }
 }

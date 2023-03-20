@@ -8,8 +8,9 @@ namespace SateliteImageAPIViewer.enums
 {
     public enum eDialog
     {
+        None,
         ImageLode,
         SingnUp,
-        Search
+        Search,        
     }
 }

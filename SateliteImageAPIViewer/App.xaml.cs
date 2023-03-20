@@ -46,6 +46,7 @@ namespace SateliteImageAPIViewer
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(SateliteSearchViewModel)));
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(HomeViewModel)));
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(SateliteAPISearchViewModel)));
+                    service.AddTransient(ViewModelSource.GetPOCOType(typeof(UserInformationUpdateViewModel)));
 
                     service.AddSingleton(ViewModelSource.GetPOCOType(typeof(MainViewModel)));
                     service.AddSingleton<ISettingService, SettingService>(obj => new SettingService());

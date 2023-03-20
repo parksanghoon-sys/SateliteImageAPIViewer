@@ -40,10 +40,10 @@
         <Border Background="#FDFEFE" Grid.RowSpan="2" 
                   CornerRadius="20 0 0 20"/>
         <Grid Grid.Row="0">
-            <Image  HorizontalAlignment="Center" 
+            <Image  HorizontalAlignment="Center" Width="50" Height="50"
+               Stretch="Fill"                    
                Source="../Images/free-icon-satellite-3398987.png" 
-               Style="{StaticResource ImageStyle}" Margin="5" />
-            
+               Style="{StaticResource ImageStyle}" Margin="5" />           
         </Grid>
         
         <StackPanel Height="300" Width="230" Grid.Row="1">
@@ -80,6 +80,18 @@
                     <Image Source="../Images/loupe.png"
                            Style="{StaticResource ImageStyle}"/>
                     <TextBlock Text="Satelite Search"
+                               Style="{StaticResource TextStyle}"/>
+                </Grid>
+            </RadioButton>
+            <RadioButton Style="{StaticResource BtnStyle}"
+                    Command="{Binding onUserInformationSettingCommand}"
+                    IsChecked="False"
+                    Visibility="{Binding IsLogin, 
+                    Converter={StaticResource BoolToVisibilityConverter }, Mode=OneWay}">
+                <Grid>
+                    <Image Source="../Images/img_setting.png"
+                           Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="User Setting"
                                Style="{StaticResource TextStyle}"/>
                 </Grid>
             </RadioButton>

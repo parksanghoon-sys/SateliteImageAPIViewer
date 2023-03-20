@@ -9,19 +9,19 @@
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <TextBlock Text="{Binding TestText}"/>
             <Image Stretch="Fill"
-                 Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}"
-               Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}"
-                Source="{Binding PrintMat, 
+                   Margin="10"
+                   Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}"
+                   Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}"
+                   Source="{Binding PrintMat, 
                 Converter={StaticResource MatToWriteableBitmapConverter},
                 ConverterParameter=Rgb24}"/>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Column="1">
-            <Button Width="30" Height="50" Margin="5" Command="{Binding onTestCommand}" Content="OX" Cursor="Hand"/>
+            <Button Width="30" Height="50" Margin="5" Command="{Binding onTestCommand}" Content="OK" Cursor="Hand"/>
         </StackPanel>
 
     </Grid>

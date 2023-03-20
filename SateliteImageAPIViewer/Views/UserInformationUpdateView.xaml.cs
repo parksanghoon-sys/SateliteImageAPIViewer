@@ -24,5 +24,18 @@ namespace SateliteImageAPIViewer.Views
         {
             InitializeComponent();
         }
+
+        private void xTextPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtPassword.Focus();
+        }
+
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPassword.Password) && txtPassword.Password.Length > 0)
+                xTextPassword.Visibility = Visibility.Collapsed;
+            else
+                xTextPassword.Visibility = Visibility.Visible;
+        }
     }
 }
