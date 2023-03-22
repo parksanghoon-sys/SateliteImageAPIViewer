@@ -7,29 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SateliteImageAPIViewer.Interfaces;
+using SateliteImageAPIViewer.Stores;
+using System.IO;
 
 namespace SateliteImageAPIViewer.ViewModels
 {
     public class ImageLoadViewModel : ViewModelBase
     {
-        public virtual Mat PrintMat { get; set; }
-        public virtual string TestText { get; set; }    
+        public virtual Mat PrintMat { get; set; }        
 
         public ImageLoadViewModel()
         {
-            Messenger.Default.Register<string>(this, OnProcessMat);
-            TestText = "Check In?";
+            Messenger.Default.Register<string>(this, OnProcessMat);            
         }
         [Command(isCommand: false)]
         private void OnProcessMat(string obj)
         {
+            if (!File.Exists(obj))
+                return;
             Mat image = Cv2.ImRead(obj, ImreadModes.Color);
             PrintMat = image;
         }
         [Command]
-        public virtual void onTest()
+        public virtual void onOk()
         {
-            TestText = "OK";
+            Messenger.Default.Send(new DialogDataStore
+            {
+                DilaogType = enums.eDialog.None,
+            });
         }
     }
 }

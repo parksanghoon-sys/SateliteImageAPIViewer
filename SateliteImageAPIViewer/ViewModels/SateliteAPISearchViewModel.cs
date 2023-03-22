@@ -11,6 +11,8 @@ using SateliteImageAPIViewer.enums;
 using SateliteImageAPIViewer.Services.DataBase;
 using SateliteImageAPIViewer.Services.Navigation;
 using SateliteImageAPIViewer.Stores;
+using System.Collections.ObjectModel;
+using SateliteImageAPIViewer.Models;
 
 namespace SateliteImageAPIViewer.ViewModels
 {
@@ -89,7 +91,12 @@ namespace SateliteImageAPIViewer.ViewModels
 
                 var result = await repository.GetSearchSatelliteData(UserId,CameraType.ToString(),CameraArea.ToString(), 
                     StartSearchDate , EndSearchDate, FileName);
-                int data = 1;
+                if(result.Count != 0)
+                {
+                    //ObservableCollection<SatelliteData> convertObsever = new ObservableCollection<SatelliteData>(result);
+                    Messenger.Default.Send(new ObservableCollection<SatelliteData>(result));
+                    this.OnCancel();
+                }                
             }
         }
         [Command]
