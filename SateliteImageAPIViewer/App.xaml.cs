@@ -49,9 +49,9 @@ namespace SateliteImageAPIViewer
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(UserInformationUpdateViewModel)));
 
                     service.AddSingleton(ViewModelSource.GetPOCOType(typeof(MainViewModel)));
-                    service.AddSingleton<ISettingService, SettingService>(obj => new SettingService());
+                    service.AddSingleton<ISettingService, SettingService>(obj => new SettingService()); //프로그램 세팅 서비스 싱글톤 등록
                     //service.AddSingleton<Interfaces.IDialogService, DialogService>(obj => new DialogService());
-                    service.AddSingleton<INavigation, NavigateionService>(obj => new NavigateionService());
+                    service.AddSingleton<INavigation, NavigateionService>(obj => new NavigateionService());// 네비게이션 서비스를위해 싱글톤 등록
                     //service.AddSingleton<AccountStore>();
                 })
                 .Build();
