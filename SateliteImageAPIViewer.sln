@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SateliteImageAPIViewer", "SateliteImageAPIViewer\SateliteImageAPIViewer.csproj", "{B89BB2D6-76BC-4A14-8CA4-7E32F75A0C42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserControlObjectTest", "UserControlObjectTest\UserControlObjectTest.csproj", "{0DE83A92-1695-46C2-82B8-677217602E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log.Common", "Log.Common\Log.Common.csproj", "{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{B89BB2D6-76BC-4A14-8CA4-7E32F75A0C42}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B89BB2D6-76BC-4A14-8CA4-7E32F75A0C42}.Release|x64.ActiveCfg = Release|x64
 		{B89BB2D6-76BC-4A14-8CA4-7E32F75A0C42}.Release|x64.Build.0 = Release|x64
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Debug|x64.Build.0 = Debug|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Release|x64.ActiveCfg = Release|Any CPU
-		{0DE83A92-1695-46C2-82B8-677217602E96}.Release|x64.Build.0 = Release|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Debug|x64.Build.0 = Debug|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Release|x64.ActiveCfg = Release|Any CPU
+		{5642A264-63CF-4FE4-AB42-6F4CD3D4E8A3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

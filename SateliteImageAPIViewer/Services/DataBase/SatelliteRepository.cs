@@ -7,18 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using SateliteImageAPIViewer.Interfaces;
 using SateliteImageAPIViewer.Models;
+using Log.Common;
 
 namespace SateliteImageAPIViewer.Services.DataBase
 {
     public class SatelliteRepository : ISatelliteRepository
     {
-        private readonly SateliteDbContext _context;
-        private readonly ILogger _logger;
+        private readonly SateliteDbContext _context;        
 
-        public SatelliteRepository(SateliteDbContext context, ILoggerFactory loggerFactory)
+        public SatelliteRepository(SateliteDbContext context)
         {
-            this._context = context;
-            this._logger = loggerFactory.CreateLogger(nameof(SatelliteRepository));
+            this._context = context;            
         }
         public async Task<SatelliteData> AddAsync(SatelliteData model)
         {
@@ -29,7 +28,7 @@ namespace SateliteImageAPIViewer.Services.DataBase
             }
             catch (Exception e)
             {
-                _logger?.LogError($"Error({nameof(AddAsync)}):{e.Message}");
+                ExDebug.Warning($"Error:{e.Message}");
             }
             return model;
         }
@@ -44,7 +43,7 @@ namespace SateliteImageAPIViewer.Services.DataBase
             }
             catch (Exception e)
             {
-                _logger?.LogError($"Error({nameof(DeleteAsync)}):{e.Message}");
+                ExDebug.Warning($"Error:{e.Message}");
             }
             return false;
         }
@@ -60,7 +59,7 @@ namespace SateliteImageAPIViewer.Services.DataBase
             }
             catch (Exception e)
             {
-
+                ExDebug.Warning($"Error:{e.Message}");
                 throw;
             }
         }
@@ -99,7 +98,7 @@ namespace SateliteImageAPIViewer.Services.DataBase
             }
             catch (Exception e)
             {
-                _logger?.LogError($"Error({nameof(UpdateAsync)}):{e.Message}");
+                ExDebug.Warning($"Error:{e.Message}");
             }
             return false;
         }

@@ -17,6 +17,7 @@ using SateliteImageAPIViewer.enums;
 using SateliteImageAPIViewer.Views.Windows;
 using SateliteImageAPIViewer.Services.Navigation;
 using SateliteImageAPIViewer.Stores;
+using Log.Common;
 
 namespace SateliteImageAPIViewer
 {
@@ -62,13 +63,14 @@ namespace SateliteImageAPIViewer
         }
         protected override async void OnStartup(StartupEventArgs e)
         {
+            LogBase.AddFileListener();
             await host.StartAsync();
             base.OnStartup(e);
 
             //var dialogService = (DialogService)App.ServiceProvider.GetRequiredService
             //                    (typeof(Interfaces.IDialogService));
             //dialogService.Register(enums.EDialogHostType.BasicType, typeof(Views.Windows.Dialog));
-
+            ExDebug.Print("Program-Start");
             var shellViewModel = (ShellViewModel)App.ServiceProvider.GetRequiredService
                                 (ViewModelSource.GetPOCOType(typeof(ShellViewModel)));
             shellViewModel.CurrentDataContext = (MainViewModel)App.ServiceProvider.GetRequiredService(ViewModelSource.GetPOCOType(typeof(MainViewModel)));

@@ -54,6 +54,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Log.Common\Log.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\free-icon-satellite-3398987.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
