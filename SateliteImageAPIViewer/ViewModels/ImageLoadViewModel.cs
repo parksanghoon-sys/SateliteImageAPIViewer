@@ -14,8 +14,8 @@ namespace SateliteImageAPIViewer.ViewModels
 {
     public class ImageLoadViewModel : ViewModelBase
     {
-        public virtual Mat PrintMat { get; set; }        
-
+        public virtual Mat PrintMat { get; set; }
+        // TODO: PrintMat 이미지를 확대 및 블러핑 하여 보여줄 컨트롤러? 혹은 해당 Imge를 ViewBox로 뺴 따른 View를 생성 예정 
         public ImageLoadViewModel()
         {
             Messenger.Default.Register<string>(this, OnProcessMat);            
