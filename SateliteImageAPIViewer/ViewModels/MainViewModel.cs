@@ -25,7 +25,7 @@ namespace SateliteImageAPIViewer.ViewModels
         {
             get => (MenuBarViewModel)App.ServiceProvider.GetRequiredService(ViewModelSource.GetPOCOType(typeof(MenuBarViewModel)));
         }         
-        public ViewModelBase CurrentDialogViewModel
+        public ViewModelBase CurrentDialogViewModel 
         {
             get => GetValue<ViewModelBase>(nameof(CurrentDialogViewModel));
             set
