@@ -56,8 +56,8 @@ namespace SateliteImageAPIViewer
                     //service.AddSingleton<AccountStore>();
                 })
                 .Build();
-            
-            
+            // TODO: 추후 HTTP이용해 API 호출 을 AddTransient 서비스로 등록해서 동작시킴
+
             ServiceProvider = host.Services;
             
         }
