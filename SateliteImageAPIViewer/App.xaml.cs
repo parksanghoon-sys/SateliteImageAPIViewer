@@ -17,6 +17,7 @@ using SateliteImageAPIViewer.enums;
 using SateliteImageAPIViewer.Views.Windows;
 using SateliteImageAPIViewer.Services.Navigation;
 using SateliteImageAPIViewer.Stores;
+using Log.Common;
 
 namespace SateliteImageAPIViewer
 {
@@ -46,28 +47,30 @@ namespace SateliteImageAPIViewer
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(SateliteSearchViewModel)));
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(HomeViewModel)));
                     service.AddTransient(ViewModelSource.GetPOCOType(typeof(SateliteAPISearchViewModel)));
+                    service.AddTransient(ViewModelSource.GetPOCOType(typeof(UserInformationUpdateViewModel)));
 
                     service.AddSingleton(ViewModelSource.GetPOCOType(typeof(MainViewModel)));
-                    service.AddSingleton<ISettingService, SettingService>(obj => new SettingService());
+                    service.AddSingleton<ISettingService, SettingService>(obj => new SettingService()); //프로그램 세팅 서비스 싱글톤 등록
                     //service.AddSingleton<Interfaces.IDialogService, DialogService>(obj => new DialogService());
-                    service.AddSingleton<INavigation, NavigateionService>(obj => new NavigateionService());
+                    service.AddSingleton<INavigation, NavigateionService>(obj => new NavigateionService());// 네비게이션 서비스를위해 싱글톤 등록
                     //service.AddSingleton<AccountStore>();
                 })
                 .Build();
-            
-            
+            // TODO: 추후 HTTP이용해 API 호출 을 AddTransient 서비스로 등록해서 동작시킴
+
             ServiceProvider = host.Services;
             
         }
         protected override async void OnStartup(StartupEventArgs e)
         {
+            LogBase.AddFileListener();
             await host.StartAsync();
             base.OnStartup(e);
 
             //var dialogService = (DialogService)App.ServiceProvider.GetRequiredService
             //                    (typeof(Interfaces.IDialogService));
             //dialogService.Register(enums.EDialogHostType.BasicType, typeof(Views.Windows.Dialog));
-
+            ExDebug.Print("Program-Start");
             var shellViewModel = (ShellViewModel)App.ServiceProvider.GetRequiredService
                                 (ViewModelSource.GetPOCOType(typeof(ShellViewModel)));
             shellViewModel.CurrentDataContext = (MainViewModel)App.ServiceProvider.GetRequiredService(ViewModelSource.GetPOCOType(typeof(MainViewModel)));

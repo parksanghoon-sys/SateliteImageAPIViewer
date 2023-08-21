@@ -50,9 +50,7 @@ namespace SateliteImageAPIViewer.Converters
                 _ => cnvt.ToWriteableBitmap(cnvt.Width, cnvt.Height, PixelFormats.Bgr24, null)
             };
 
-
         }
-
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

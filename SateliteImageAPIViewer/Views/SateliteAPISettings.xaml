@@ -108,9 +108,9 @@
                                  IsChecked="{Binding Path=CameraArea , Converter={StaticResource CameraTypeConverter},
                                  ConverterParameter={x:Static enum:eCameraArea.ko}, Mode=TwoWay}"/>
                 </Grid>
-                <Button Content="TEST" Command="{Binding OnTestCommand}" Margin="10" 
+                <!--<Button Content="TEST" Command="{Binding OnTestCommand}" Margin="10" 
                         Style="{StaticResource mainRectButton}" Width="auto"
-                        Cursor="Hand" BorderThickness="1"/>
+                        Cursor="Hand" BorderThickness="1"/>-->
             </StackPanel>
         </StackPanel>
     </Border>

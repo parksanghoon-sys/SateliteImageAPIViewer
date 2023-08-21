@@ -32,6 +32,9 @@
     <DataTemplate DataType="{x:Type dataContext:HomeViewModel}">
         <views:HomeView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type dataContext:UserInformationUpdateViewModel}">
+        <views:UserInformationUpdateView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type dataContext:SateliteSearchViewModel}">
         <viewPages:SateliteSearchView/>
     </DataTemplate>

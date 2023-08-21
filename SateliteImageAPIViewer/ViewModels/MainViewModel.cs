@@ -25,7 +25,7 @@ namespace SateliteImageAPIViewer.ViewModels
         {
             get => (MenuBarViewModel)App.ServiceProvider.GetRequiredService(ViewModelSource.GetPOCOType(typeof(MenuBarViewModel)));
         }         
-        public ViewModelBase CurrentDialogViewModel
+        public ViewModelBase CurrentDialogViewModel 
         {
             get => GetValue<ViewModelBase>(nameof(CurrentDialogViewModel));
             set
@@ -63,6 +63,10 @@ namespace SateliteImageAPIViewer.ViewModels
         {
             switch (obj.DilaogType)
             {
+                case enums.eDialog.None:
+                    CurrentDialogViewModel = null;
+                    IsOpen = false;                    
+                    break;
                 case enums.eDialog.ImageLode:
                     CurrentDialogViewModel = (ImageLoadViewModel)App.ServiceProvider.GetRequiredService(ViewModelSource.GetPOCOType(typeof(ImageLoadViewModel)));
                     //Messenger.Default.Send<string>(@"F:\wpf\VideoViewer\SateliteImageAPIViewer\bin\Debug\net6.0-windows\20230223\sw038_ko020lc_202302220000.jpg");
@@ -77,16 +81,10 @@ namespace SateliteImageAPIViewer.ViewModels
             }
 
         }
-
-        private void onSetBusy(bool obj)
-        {
-            IsOpen = obj;
-        }
         [Command]
         public virtual void onMenuOpen()
         {
-            IsMenuOpen = !IsMenuOpen;
-            //IsOpen = !IsOpen;
+            IsMenuOpen = !IsMenuOpen;            
         }
 
     }

@@ -39,10 +39,9 @@ namespace SateliteImageAPIViewer.ViewModels
         {
             using (var context = new UserDataDbContext())
             {
-                var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
-                var logFactory = serviceProvider.GetService<ILoggerFactory>();
+                var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();                
                 var isSuecess = context.Database.EnsureCreated();
-                var repository = new UserRepository(context, logFactory);
+                var repository = new UserRepository(context);
                 var checedCncrypedPassword = new PasswordEncryptionHelper(UserPassword).GetSHAEncryptedPassword();
 
                 var user = await repository.GetByIdAsync(UserId);

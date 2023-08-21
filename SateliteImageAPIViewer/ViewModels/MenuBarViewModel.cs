@@ -48,5 +48,10 @@ namespace SateliteImageAPIViewer.ViewModels
         {
             _navigation.Navigate<SateliteSearchViewModel>();
         }
+        [Command]
+        public virtual void onUserInformationSetting()
+        {
+            _navigation.Navigate<UserInformationUpdateViewModel>();
+        }
     }
 }

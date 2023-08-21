@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using SateliteImageAPIViewer.enums;
 using SateliteImageAPIViewer.Services.DataBase;
 using SateliteImageAPIViewer.Services.Navigation;
+using SateliteImageAPIViewer.Stores;
+using System.Collections.ObjectModel;
+using SateliteImageAPIViewer.Models;
 
 namespace SateliteImageAPIViewer.ViewModels
 {
@@ -79,22 +82,29 @@ namespace SateliteImageAPIViewer.ViewModels
         {
             using (var context = new SateliteDbContext())
             {
-                var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();
-                var factory = serviceProvider.GetService<ILoggerFactory>();
+                var serviceProvider = new ServiceCollection().AddLogging().BuildServiceProvider();                
 
                 var isSuecess = context.Database.EnsureCreated(); //데이터 베이스가 만들어져 있는지 확인
                                                                   //[A] Arrange :1 번 데이터를 아래 항목으로 저장
-                var repository = new SatelliteRepository(context, factory);
+                var repository = new SatelliteRepository(context);
 
                 var result = await repository.GetSearchSatelliteData(UserId,CameraType.ToString(),CameraArea.ToString(), 
                     StartSearchDate , EndSearchDate, FileName);
-                int data = 1;
+                if(result.Count != 0)
+                {
+                    //ObservableCollection<SatelliteData> convertObsever = new ObservableCollection<SatelliteData>(result);
+                    Messenger.Default.Send(new ObservableCollection<SatelliteData>(result));
+                    this.OnCancel();
+                }                
             }
         }
         [Command]
         public void OnCancel()
         {
-            _navigation.Navigate<HomeViewModel>();
+            Messenger.Default.Send(new DialogDataStore
+            {
+                DilaogType = enums.eDialog.None,
+            });
         }
     }
 }

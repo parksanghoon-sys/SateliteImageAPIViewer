@@ -92,10 +92,14 @@ namespace SateliteImageAPIViewer.Helpers
         {
             if (sender is not PasswordBox)
                 return;
-            PasswordBox passwordBox = sender as PasswordBox;
-            SetIsUpdating(passwordBox, true);
-            SetPassword(passwordBox, passwordBox.Password);
-            SetIsUpdating(passwordBox, false);
+            if(sender is PasswordBox)
+            {
+                PasswordBox passwordBox = sender as PasswordBox;
+                SetIsUpdating(passwordBox, true);
+                SetPassword(passwordBox, passwordBox.Password);
+                SetIsUpdating(passwordBox, false);
+            }
+
         }
     }
 }
